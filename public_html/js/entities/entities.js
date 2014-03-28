@@ -5,6 +5,9 @@ game.PlayerEntity = me.ObjectEntity.extend({
         settings.spriteheight = "97";
         this.parent(x, y, settings);
         
+        this.renderable.addAnimation("idle", [3]);
+        this.renderable.setCurrentAnimation("idle");
+        
         this.setVelocity(5, 20);
     },
         
@@ -12,12 +15,17 @@ game.PlayerEntity = me.ObjectEntity.extend({
        if(me.input.isKeyPressed("right")) {
            this.vel.x += this.accel.x * me.timer.tick;
        }
+       else if(me.input.isKeyPressed("left")){
+               this.vel.x -= this.accel.x * me.timer.tick;
+       }
        else{
            this.vel.x = 0;
        }
        
        this.updateMovement();
-       return true;
-
+       
+       if(this.vel.x !== 0) {
+           return true;
+       }
     }
 });

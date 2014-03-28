@@ -45,6 +45,7 @@ var game = {
                 me.entityPool.add("player", game.PlayerEntity);
                 
                 me.input.bindKey(me.input.KEY.RIGHT, "right");
+                me.input.bindKey(me.input.KEY.LEFT, "left");
 
 		// Start the game.
 		me.state.change(me.state.PLAY);
