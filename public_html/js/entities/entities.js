@@ -10,7 +10,9 @@ game.PlayerEntity = me.ObjectEntity.extend({
         this.renderable.addAnimation("idle", [3]);
         this.renderable.setCurrentAnimation("idle");
         
-        this.setVelocity(5, 20);
+        this.setVelocity(5, 13);
+        
+        me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
     },
         
     update: function() {
@@ -24,12 +26,13 @@ game.PlayerEntity = me.ObjectEntity.extend({
            this.vel.x = 0;
        }
        
+       if(me.input.isKeyPressed("jump")) {
+            this.vel.y -= this.accel.y * me.timer.tick;
+       }
+
        var collision = this.collide();
        this.updateMovement();
-       
-       if(this.vel.x !== 0) {
-           return true;
-       }
+       return true;
     }
 });
 
