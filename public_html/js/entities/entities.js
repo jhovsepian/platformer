@@ -10,6 +10,7 @@ game.PlayerEntity = me.ObjectEntity.extend({
         this.collidable = true;
         
         this.renderable.addAnimation("idle", [3]);
+        //create a run animation, create an array for values 4 - 14, set the speed 
         this.renderable.setCurrentAnimation("idle");
         
         this.setVelocity(5, 13);
@@ -27,6 +28,13 @@ game.PlayerEntity = me.ObjectEntity.extend({
        else{
            this.vel.x = 0;
        }
+       
+       //if (check whether the velocity of x is NOT zero)
+       // if(check if the animation is NOT run)
+       //     setCurrentAnimation("run");
+       //     this.renderable.setAnimationFrame();
+       //else
+       //   set the animation back to idle
        
        if(me.input.isKeyPressed("jump")) {
             this.vel.y -= this.accel.y * me.timer.tick;
